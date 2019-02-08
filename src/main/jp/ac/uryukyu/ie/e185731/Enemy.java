@@ -17,18 +17,16 @@ public class Enemy extends LivingThing{
         super(name, hitPoint, attack);
     }
 
-
-
     /**
      * 自身へ攻撃されたときのダメージ処理をするメソッド。
      * 指定されたダメージを hitPoint から引き、死亡判定を行う。
      * @param damage 受けたダメージ
      */
     public void wounded(int damage){
-        hitPoint -= damage;
-        if( hitPoint < 0 ) {
-            dead = true;
-            System.out.printf("モンスター%sは倒れた。\n", name);
+        cal_damage(damage);
+        if( this.getHitPoint() < 0 ) {
+            this.setDead(true);
+            System.out.printf("モンスター%sは倒れた。\n", this.getName());
         }
     }
 
